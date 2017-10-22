@@ -1,6 +1,7 @@
 package coshx.com.rewards;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,7 +24,7 @@ import coshx.com.rewards.model.Offer;
 
 public class SwipeDeckAdapter extends BaseAdapter {
 
-    private List<Offer> data;
+    public List<Offer> data;
     private Context context;
 
     public SwipeDeckAdapter(List<Offer> data, Context context) {
@@ -61,8 +62,11 @@ public class SwipeDeckAdapter extends BaseAdapter {
 
 
         v.setOnClickListener(v1 -> {
-            String item = (String)getItem(position);
-            Log.i("MainActivity", item);
+            Offer o = data.get(position);
+            Log.i("MainActivity", o.toString());
+            Intent intent = new Intent(v1.getContext(), DealDetailsActivity.class);
+            intent.putExtra("title", o.getMerchantName());
+            v1.getContext().startActivity(intent);
         });
 
         return v;

@@ -12,7 +12,7 @@
         android:scaleType="fitCenter"
         android:layout_margin="8dp"
         android:background="@android:color/transparent"
-        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
         android:id="@+id/action_bar_back"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -22,11 +22,27 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_action_name"
         android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:id="@+id/action_bar_profile"
+        android:layout_marginLeft="8dp"
+        android:layout_toLeftOf="@+id/space"
+        android:layout_margin="8dp"
+        />
+
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:id="@+id/space"
+        android:layout_alignParentRight="true"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_name"
+        android:scaleType="fitCenter"
         android:layout_margin="8dp"
         android:background="@android:color/transparent"
-        android:layout_alignParentRight="true"
-        android:id="@+id/action_bar_profile"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/action_bar_star"
+        android:layout_alignParentLeft="true" />
 
 </RelativeLayout>

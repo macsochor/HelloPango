@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         SwipeDeck cardStack = (SwipeDeck) findViewById(R.id.swipe_deck);
 
         final ArrayList<String> testData = new ArrayList<>();
+        al_offers.add(new Offer("asdf", "asdf", "test", "etas"));
 
 
         final SwipeDeckAdapter adapter = new SwipeDeckAdapter(al_offers, this);
@@ -113,13 +114,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void cardSwipedLeft(int position) {
                 Log.i("MainActivity", "card was swiped left, position in adapter: " + position);
-                testData.add(""+position%5);
+                al_offers.add(adapter.data.get(position%12));
             }
 
             @Override
             public void cardSwipedRight(int position) {
                 Log.i("MainActivity", "card was swiped right, position in adapter: " + position);
-                testData.add(""+position%5);
+                al_offers.add(adapter.data.get(position%12));
             }
 
             @Override
@@ -142,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         b.setOnClickListener(v -> {
             cardStack.invalidate();
             Log.e(TAG, al_offers.toString());
+            adapter.notifyDataSetChanged();
         });
 
     }

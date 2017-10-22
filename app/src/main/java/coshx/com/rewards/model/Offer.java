@@ -43,4 +43,28 @@ public class Offer {
     public void setAmount(String amount) {
         this.amount = amount;
     }
+
+    public String getMerchantLogoUrl() {
+        return merchantLogoUrl;
+    }
+
+    public void setMerchantLogoUrl(String merchantLogoUrl) {
+        this.merchantLogoUrl = merchantLogoUrl;
+    }
+
+    public String getMerchantName() {
+        return merchantName;
+    }
+
+    public void setMerchantName(String merchantName) {
+        this.merchantName = merchantName;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
