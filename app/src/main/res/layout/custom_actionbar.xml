@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <ImageButton
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pango"
+        android:scaleType="fitCenter"
+        android:layout_margin="8dp"
+        android:background="@android:color/transparent"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/action_bar_back"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_name"
+        android:scaleType="fitCenter"
+        android:layout_margin="8dp"
+        android:background="@android:color/transparent"
+        android:layout_alignParentRight="true"
+        android:id="@+id/action_bar_profile"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
