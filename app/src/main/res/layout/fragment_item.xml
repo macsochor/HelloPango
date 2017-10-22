@@ -9,7 +9,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="0dp"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
@@ -26,7 +26,7 @@
                 android:id="@+id/card_gradient"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/reward_gradient" />
+                android:background="@color/black" />
 
             <ImageView
                 android:id="@+id/iv_gif"
@@ -47,15 +47,15 @@
                 android:gravity="center"
                 android:minHeight="20dp"
                 android:padding="8dp"
-                android:textSize="10sp"
                 android:text="Sponsored"
                 android:textAllCaps="false"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="10sp" />
 
             <ImageView
                 android:id="@+id/iv_megaphone"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_margin="12dp"
@@ -66,17 +66,20 @@
                 android:id="@+id/id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/white"
                 android:text="TEST"
                 android:textAppearance="?attr/textAppearanceListItem" />
 
             <TextView
                 android:id="@+id/content"
-                style="@style/FontTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
-                android:layout_toRightOf="@id/id"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/white"
                 android:text="asdfasdf"
                 android:textAppearance="?attr/textAppearanceListItem" />
 

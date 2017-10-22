@@ -43,12 +43,24 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         Drawable reward_gradient = context.getDrawable(R.drawable.reward_gradient);
         Drawable progress_gradient = context.getDrawable(R.drawable.progress_gradient);
 
-        holder.gradient.setBackground(position % 3 == 0 ? reward_gradient : position % 3 == 1 ? ad_gradient : progress_gradient);
-//        if (position % 3 == 0)
-        if(position % 3 != 1) Glide.with(context).load(offer.getBackgroundUrl()).into(holder.iv_gif);
-        if (offer.getType() != null && !offer.getType().equals("offer")){
+        if (offer.getType().equals("progress")){
             holder.iv_mega.setVisibility(View.GONE);
+            holder.tv_sponsor.setVisibility(View.GONE);
+            holder.gradient.setBackground(progress_gradient);
+            Glide.with(context).load(offer.getBackgroundUrl()).into(holder.iv_gif);
         }
+        if(offer.getType().equals("reward")){
+            Glide.with(context).load(offer.getBackgroundUrl()).into(holder.iv_gif);
+            holder.iv_mega.setVisibility(View.GONE);
+            holder.tv_sponsor.setVisibility(View.GONE);
+            holder.gradient.setBackground(reward_gradient);
+        }
+        if(offer.getType().equals("offer")){
+            holder.gradient.setBackground(ad_gradient);
+            holder.iv_gif.setBackground(null);
+        }
+
+
 
 
         holder.mItem = offers.get(position);

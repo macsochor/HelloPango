@@ -32,6 +32,7 @@ import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import coshx.com.rewards.dummy.DummyContent;
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     al_offers.add(offer);
                     rv.invalidate();
                 }
+                Collections.sort(al_offers, new OfferComparator());
                 rv.setAdapter(new MyItemRecyclerViewAdapter(al_offers));
 
             }
