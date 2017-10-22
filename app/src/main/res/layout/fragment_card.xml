@@ -52,11 +52,14 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="0dp"
+                android:background="@drawable/cardview_bg"
                 app:cardElevation="0dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cardview_bg"
+                    >
 
                     <TextView
                         android:id="@+id/tv_purchase_business1"
@@ -99,6 +102,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:background="@drawable/cardview_bg"
+
                     android:layout_height="match_parent">
 
                     <TextView
@@ -142,6 +147,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:background="@drawable/cardview_bg"
+
                     android:layout_height="match_parent">
 
                     <TextView
@@ -186,6 +193,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:background="@drawable/cardview_bg"
+
                     android:layout_height="match_parent">
 
                     <TextView
