@@ -2,6 +2,7 @@ package coshx.com.rewards;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -75,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
         Drawable active_toprleft = getResources().getDrawable(R.drawable.rewards_active);
         Drawable inactive_topleft = getResources().getDrawable(R.drawable.rewards);
         Drawable active_center = getResources().getDrawable(R.drawable.pango);
-        Drawable inactive_center = getResources().getDrawable(R.drawable.logo_bw);
+        Drawable inactive_center = getResources().getDrawable(R.drawable.pango);
+        Drawable inactive_plus = getResources().getDrawable(R.drawable.add_card_pressed);
+        Drawable active_plus = getResources().getDrawable(R.drawable.add_card);
 
         offersFragment = new OffersFragment();
         cardFragment = new CardFragment();
@@ -114,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 offersFragment.setAdatper(starred);
             }
-//            cardStack.setAdapter(new SwipeDeckAdapter(stars_active ? starred : al_offers, this));
         });
 
         b_logo.setOnClickListener(v1 -> {
@@ -127,22 +129,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        final ArrayList<String> testData = new ArrayList<>();
-
         BottomNavigationView bnv = findViewById(R.id.bottom_navigation);
-        bnv.setOnNavigationItemReselectedListener(item -> {
+        bnv.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.action_card:
-                    fragmet = offersFragment;
-                    Toast.makeText(this, "bottom", Toast.LENGTH_SHORT).show();
+                    fragmet = cardFragment;
+                    imageButton.setImageDrawable(null);
+                    b_star.setImageDrawable(active_plus);
                     break;
                 case R.id.action_pango_home:
-                    fragmet = cardFragment;
+                    imageButton.setImageDrawable(inactive_topright);
+                    b_star.setImageDrawable(inactive_topleft);
+                    b_logo.setImageDrawable(active_center);
+                    fragmet = offersFragment;
                     break;
 
             }
             replaceFragment();
-
+            return true;
         });
     }
 

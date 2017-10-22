@@ -12,8 +12,7 @@ public class DealDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_deal_details);
         Bundle extras = getIntent().getExtras();
         if (extras != null){
-            TextView tv = (TextView) findViewById(R.id.tv_details_title);
-            tv.setText(extras.getString("title", "Q_Q"));
+
         }
     }
 }
