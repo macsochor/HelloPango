@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(llm);
         rv.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS));
 
-//        ImageView imageView = (ImageView) findViewById(R.id.iv_profpic);
+//        ImageView iv_gif = (ImageView) findViewById(R.id.iv_profpic);
 //
-//        Picasso.with(this).load(user.getPhotoUrl().toString()).into(imageView);
+//        Picasso.with(this).load(user.getPhotoUrl().toString()).into(iv_gif);
         FirebaseMessaging.getInstance().subscribeToTopic("Offers");
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
