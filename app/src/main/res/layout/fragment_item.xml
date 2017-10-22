@@ -32,6 +32,8 @@
                 android:id="@+id/iv_gif"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:alpha="0.1"
                 android:scaleType="centerCrop" />
 
@@ -39,6 +41,9 @@
                 android:id="@+id/tv_sponsor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_above="@+id/iv_megaphone"
+                android:layout_alignStart="@+id/iv_megaphone"
+                android:layout_marginBottom="12dp"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/rounded_button"
                 android:elevation="0dp"
@@ -48,17 +53,36 @@
                 android:text="Sponsored"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
-                android:textSize="10sp"
-                android:layout_above="@+id/iv_megaphone"
-                android:layout_alignStart="@+id/iv_megaphone"
-                android:layout_marginBottom="12dp" />
-            
+                android:textSize="10sp" />
+
+            <ImageView
+                android:id="@+id/iv_notad_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/rewards_card" />
+
+            <ImageView
+                android:id="@+id/iv_topleft_icon"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/tv_sponsor"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="3dp"
+                android:scaleType="fitStart" />
+
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="30dp"
-                android:layout_margin="16dp"
-                android:id="@+id/iv_topleft_icon"/>
-            
+                android:layout_alignTop="@+id/tv_sponsor"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="3dp"
+                android:scaleType="fitStart" />
+
+
             <ImageView
                 android:id="@+id/iv_megaphone"
                 android:layout_width="70dp"
@@ -75,10 +99,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="50dp"
-                android:text="Buy one stabucks bullshit nonsnse"
-                android:textSize="28sp"
+                android:text="Lorem ipsum is simply a dummy text"
+                android:layout_marginRight="60dp"
                 android:textAppearance="?attr/textAppearanceListItem"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="21sp"/>
 
             <TextView
                 android:id="@+id/content"

@@ -117,8 +117,6 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                                     Toast.LENGTH_SHORT).show();
 //                            updateUI(null);
                         }
-
-                        // ...
                     }
                 });
     }

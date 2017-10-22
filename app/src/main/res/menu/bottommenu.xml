@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_favorites"
+        android:id="@+id/action_pango_home"
         android:enabled="true"
-        android:icon="@drawable/ic_action_name"
-        android:title="ONE"
+        android:icon="@drawable/pango_home"
+        android:title="My Pango"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_schedules"
+        android:id="@+id/action_card"
         android:enabled="true"
-        android:icon="@drawable/ic_action_name"
-        android:title="TWO"
+        android:icon="@drawable/card"
+        android:title="Credit Cards"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_music"
+        android:id="@+id/user"
         android:enabled="true"
-        android:icon="@drawable/ic_action_name"
-        android:title="THREE"
+        android:icon="@drawable/user"
+        android:title="Profile"
         app:showAsAction="ifRoom" />
 </menu>

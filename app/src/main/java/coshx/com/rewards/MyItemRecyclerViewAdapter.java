@@ -47,6 +47,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         Drawable ad_gradient = context.getDrawable(R.drawable.ad_gradient);
         Drawable reward_gradient = context.getDrawable(R.drawable.reward_gradient);
         Drawable progress_gradient = context.getDrawable(R.drawable.progress_gradient);
+        Drawable progress_drawable = context.getDrawable(R.drawable.progress_card);
+        Drawable rewards_drawable = context.getDrawable(R.drawable.rewards_card);
 
 
         if(offer.getType().equals("offer")){
@@ -55,27 +57,32 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             holder.iv_gif.setBackground(null);
             holder.mIdView.setTextColor(context.getResources().getColor(R.color.black));
             holder.mContentView.setTextColor(context.getResources().getColor(R.color.black));
+            holder.iv_notad.setVisibility(View.GONE);
         }
         else if (offer.getType().equals("progress")){
             holder.iv_mega.setVisibility(View.GONE);
             holder.tv_sponsor.setVisibility(View.GONE);
             holder.gradient.setBackground(progress_gradient);
             Glide.with(context).load(offer.getBackgroundUrl()).into(holder.iv_gif);
+            holder.iv_notad.setImageDrawable(context.getResources().getDrawable(R.drawable.progress_card));
         } else/* (offer.getType().equals("reward"))*/{
             Glide.with(context).load(offer.getBackgroundUrl()).into(holder.iv_gif);
             holder.iv_mega.setVisibility(View.GONE);
             holder.tv_sponsor.setVisibility(View.GONE);
             holder.gradient.setBackground(reward_gradient);
+            holder.iv_notad.setImageDrawable(context.getResources().getDrawable(R.drawable.rewards_card));
         }
 
-
+        if (position == getItemCount()-1){
+            LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            llp.setMargins(16, 16, 16, 64);
+            holder.ll.setLayoutParams(llp);
+        }
         holder.mItem = offers.get(position);
-        holder.mIdView.setText(offers.get(position).merchantName);
-        holder.mContentView.setText(offers.get(position).title);
-        Typeface font = Typeface.createFromAsset(holder.mIdView.getContext().getAssets(), "sf-pro-display-regular.otf");
-        holder.mContentView.setTypeface(font);
-
-        holder.tv_sponsor.setTypeface(font);
+        holder.mIdView.setText(offers.get(position).title);
+        holder.mContentView.setText(offers.get(position).subtitle);
+        Typeface font = Typeface.createFromAsset(holder.mIdView.getContext().getAssets(), "poppins-bold.ttf");
+        holder.mIdView.setTypeface(font);
 
         holder.mView.setOnClickListener(v -> {
             Toast.makeText(holder.mIdView.getContext(), "onClick " + position, Toast.LENGTH_SHORT).show();
@@ -97,6 +104,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final CardView cardView;
         public final ImageView iv_gif;
         public final ImageView iv_topleft_icon;
+        public final ImageView iv_notad;
         public final View gradient;
         public final TextView tv_sponsor;
         public final ImageView iv_mega;
@@ -114,6 +122,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             tv_sponsor = view.findViewById(R.id.tv_sponsor);
             iv_mega = view.findViewById(R.id.iv_megaphone);
             iv_topleft_icon = view.findViewById(R.id.iv_topleft_icon);
+            iv_notad = view.findViewById(R.id.iv_notad_icon);
             ll = (LinearLayout) view;
         }
 

@@ -1,6 +1,7 @@
 package coshx.com.rewards;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.setAdapter(new MyItemRecyclerViewAdapter(al_offers));
+        Drawable active_topright = getResources().getDrawable(R.drawable.progress_active);
+        Drawable inactive_topright = getResources().getDrawable(R.drawable.progress);
+        Drawable active_toprleft = getResources().getDrawable(R.drawable.rewards_active);
+        Drawable inactive_topleft = getResources().getDrawable(R.drawable.rewards);
+        Drawable active_center = getResources().getDrawable(R.drawable.pango);
+        Drawable inactive_center = getResources().getDrawable(R.drawable.logo_bw);
 
 //        ImageView iv_gif = (ImageView) findViewById(R.id.iv_profpic);
 //
@@ -100,9 +107,15 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.custom_actionbar);
 
         ImageButton imageButton = myToolbar.findViewById(R.id.action_bar_profile);
+        ImageButton b_star = myToolbar.findViewById(R.id.action_bar_star);
+        ImageButton b_logo = myToolbar.findViewById(R.id.action_bar_logo);
 
         imageButton.setOnClickListener(v -> {
             Toast.makeText(this, "profile pressed", Toast.LENGTH_SHORT).show();
+            imageButton.setImageDrawable(active_topright);
+            b_star.setImageDrawable(inactive_topleft);
+            b_logo.setImageDrawable(inactive_center);
+
             ArrayList<Offer> in_progress = new ArrayList<>();
             for (Offer o : al_offers){
                 if(o.type.equals("progress")){
@@ -112,8 +125,11 @@ public class MainActivity extends AppCompatActivity {
             rv.setAdapter(new MyItemRecyclerViewAdapter(in_progress));
         });
 
-        ImageButton b_star = myToolbar.findViewById(R.id.action_bar_star);
+        imageButton.setImageDrawable(inactive_topright);
         b_star.setOnClickListener(v1 -> {
+            b_star.setImageDrawable(active_toprleft);
+            imageButton.setImageDrawable(inactive_topright);
+            b_logo.setImageDrawable(inactive_center);
             ArrayList<Offer> starred = new ArrayList<>();
             for (Offer o : al_offers){
                 if(o.type.equals("reward")){
@@ -124,8 +140,10 @@ public class MainActivity extends AppCompatActivity {
 //            cardStack.setAdapter(new SwipeDeckAdapter(stars_active ? starred : al_offers, this));
         });
 
-        ImageButton b_logo = myToolbar.findViewById(R.id.action_bar_logo);
         b_logo.setOnClickListener(v1 -> {
+            b_logo.setImageDrawable(active_center);
+            imageButton.setImageDrawable(inactive_topright);
+            b_star.setImageDrawable(inactive_topleft);
             rv.setAdapter(new MyItemRecyclerViewAdapter(al_offers));
         });
 
@@ -177,11 +195,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.action_favorite:
+            case R.id.action_card:
 //                // User chose the "Favorite" action, mark the current item
 //                // as a favorite...
 //                Toast.makeText(this, "profile icon pressed", Toast.LENGTH_SHORT).show();
 //                return true;
+
 
             default:
                 // If we got here, the user's action was not recognized.

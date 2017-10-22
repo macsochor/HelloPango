@@ -17,7 +17,7 @@ public class CustomFontApplication extends Application {
         // initalize Calligraphy
         CalligraphyConfig.initDefault(
                 new CalligraphyConfig.Builder()
-                        .setDefaultFontPath("poppins-bold.ttf")
+                        .setDefaultFontPath("sf-pro-display-regular.otf")
                         .setFontAttrId(R.attr.fontPath)
                         .build()
         );
