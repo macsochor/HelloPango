@@ -9,15 +9,15 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-    android:id="@+id/my_toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="@color/white"
-    android:elevation="4dp"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentStart="true" />
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <!--<TextView-->
     <!--android:layout_width="wrap_content"-->
@@ -35,51 +35,52 @@
     <!--android:id="@+id/iv_profpic"/>-->
 
     <android.support.v7.widget.RecyclerView
-    android:id="@+id/rv"
-    android:name="coshx.com.rewards.ItemFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layoutManager="LinearLayoutManager"
-    tools:context="coshx.com.rewards.ItemFragment"
-    tools:listitem="@layout/fragment_item"
-    android:layout_below="@id/my_toolbar"
-    android:layout_alignParentStart="true" />
+        android:id="@+id/rv"
+        android:name="coshx.com.rewards.ItemFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="coshx.com.rewards.ItemFragment"
+        tools:listitem="@layout/fragment_item"
+        android:layout_below="@id/my_toolbar"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_alignParentStart="true" />
 
 
     <android.support.design.widget.BottomNavigationView
-    android:id="@+id/bottom_navigation"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    app:itemBackground="@color/colorPrimary"
-    app:itemIconTint="@color/white"
-    app:itemTextColor="@color/white"
-    app:menu="@menu/bottommenu" />
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottommenu" />
 
     <!--<com.daprlabs.cardstack.SwipeFrameLayout-->
-        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--xmlns:swipedeck="http://schemas.android.com/apk/res-auto"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_below="@+id/my_toolbar"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:orientation="vertical">-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:swipedeck="http://schemas.android.com/apk/res-auto"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_below="@+id/my_toolbar"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
 
-        <!--<Button-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="bottom"-->
-            <!--android:id="@+id/b_mainact"-->
-            <!--android:text="Button" />-->
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="bottom"-->
+    <!--android:id="@+id/b_mainact"-->
+    <!--android:text="Button" />-->
 
-        <!--<com.daprlabs.cardstack.SwipeDeck-->
-            <!--android:id="@+id/swipe_deck"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="480dp"-->
-            <!--android:padding="20dp"-->
-            <!--swipedeck:card_spacing="10dp"-->
-            <!--swipedeck:max_visible="3"-->
-            <!--swipedeck:render_above="true"-->
-            <!--swipedeck:rotation_degrees="15" />-->
+    <!--<com.daprlabs.cardstack.SwipeDeck-->
+    <!--android:id="@+id/swipe_deck"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="480dp"-->
+    <!--android:padding="20dp"-->
+    <!--swipedeck:card_spacing="10dp"-->
+    <!--swipedeck:max_visible="3"-->
+    <!--swipedeck:render_above="true"-->
+    <!--swipedeck:rotation_degrees="15" />-->
 
     <!--</com.daprlabs.cardstack.SwipeFrameLayout>-->
 

@@ -45,8 +45,10 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
         holder.gradient.setBackground(position % 3 == 0 ? reward_gradient : position % 3 == 1 ? ad_gradient : progress_gradient);
 //        if (position % 3 == 0)
-        Glide.with(context).load("https://slack-imgs.com/?c=1&url=http%3A%2F%2Fmedia2.giphy.com%2Fmedia%2FvER8rSZTjKpag%2Fgiphy.gif").into(holder.iv_gif);
-
+        if(position % 3 != 1) Glide.with(context).load(offer.getBackgroundUrl()).into(holder.iv_gif);
+        if (offer.getType() != null && !offer.getType().equals("offer")){
+            holder.iv_mega.setVisibility(View.GONE);
+        }
 
 
         holder.mItem = offers.get(position);
@@ -54,6 +56,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mContentView.setText(offers.get(position).amount);
         Typeface font = Typeface.createFromAsset(holder.mIdView.getContext().getAssets(), "sf-pro-display-regular.otf");
         holder.mIdView.setTypeface(font);
+
+        holder.tv_sponsor.setTypeface(font);
 
         holder.mView.setOnClickListener(v -> {
             Toast.makeText(holder.mIdView.getContext(), "onClick " + position, Toast.LENGTH_SHORT).show();
@@ -75,6 +79,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final CardView cardView;
         public final ImageView iv_gif;
         public final View gradient;
+        public final TextView tv_sponsor;
+        public final ImageView iv_mega;
         public Offer mItem;
         public LinearLayout ll;
 
@@ -86,6 +92,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             mContentView = view.findViewById(R.id.content);
             cardView = view.findViewById(R.id.card_view);
             iv_gif = view.findViewById(R.id.iv_gif);
+            tv_sponsor = view.findViewById(R.id.tv_sponsor);
+            iv_mega = view.findViewById(R.id.iv_megaphone);
             ll = (LinearLayout) view;
         }
 

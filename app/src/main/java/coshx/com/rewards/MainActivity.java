@@ -60,11 +60,13 @@ public class MainActivity extends AppCompatActivity {
 
 //        TextView textView = (TextView) findViewById(R.id.test);
 
+        al_offers = new ArrayList<>();
+
 //        RecyclerView stuff
         rv = (RecyclerView) findViewById(R.id.rv);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
-        rv.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS));
+        rv.setAdapter(new MyItemRecyclerViewAdapter(al_offers));
 
 //        ImageView iv_gif = (ImageView) findViewById(R.id.iv_profpic);
 //
@@ -73,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("backend").child("offers");
-        al_offers = new ArrayList<>();
 
 
 //        SwipeDeck cardStack = (SwipeDeck) findViewById(R.id.swipe_deck);
@@ -86,7 +87,9 @@ public class MainActivity extends AppCompatActivity {
                     Offer offer = postSnapshot.getValue(Offer.class);
                     Log.e("Get Data", offer.toString());
                     al_offers.add(offer);
+                    rv.invalidate();
                 }
+                rv.setAdapter(new MyItemRecyclerViewAdapter(al_offers));
 
             }
             @Override
@@ -122,8 +125,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         final ArrayList<String> testData = new ArrayList<>();
-        al_offers.add(new Offer("asdf", "asdf", "test", "etas"));
-
 
 //        SwipeDeckAdapter adapter = new SwipeDeckAdapter(al_offers, this);
 //

@@ -21,19 +21,45 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/ad_gradient">
-<!--bottom-->
+            <!--bottom-->
             <View
+                android:id="@+id/card_gradient"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/reward_gradient"
-                android:id="@+id/card_gradient"/>
+                android:background="@drawable/reward_gradient" />
 
             <ImageView
+                android:id="@+id/iv_gif"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.2"
-                android:scaleType="centerCrop"
-                android:id="@+id/iv_gif"/>
+                android:alpha="0.1"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_sponsor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_button"
+                android:elevation="0dp"
+                android:gravity="center"
+                android:minHeight="20dp"
+                android:padding="8dp"
+                android:textSize="10sp"
+                android:text="Sponsored"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/iv_megaphone"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="12dp"
+                android:src="@drawable/megaphone" />
 
 
             <TextView
@@ -50,11 +76,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
-                android:text="asdfasdf"
                 android:layout_toRightOf="@id/id"
+                android:text="asdfasdf"
                 android:textAppearance="?attr/textAppearanceListItem" />
-
-
 
 
         </RelativeLayout>

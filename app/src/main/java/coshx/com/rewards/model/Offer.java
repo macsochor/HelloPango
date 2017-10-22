@@ -11,7 +11,9 @@ public class Offer {
 
     public String amount;
     public String merchantLogoUrl;
+    public String backgroundUrl;
     public String merchantName;
+    public String type;
     public String title;
 
 
@@ -19,11 +21,13 @@ public class Offer {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public Offer(String amount, String merchant_logo_url, String merchant_name, String title) {
+    public Offer(String amount, String merchant_logo_url, String backgroundUrl, String merchant_name, String title, String type) {
         this.amount = amount;
         this.merchantLogoUrl = merchant_logo_url;
+        this.backgroundUrl = backgroundUrl;
         this.merchantName = merchant_name;
         this.title = title;
+        this.type = type;
     }
 
     @Override
@@ -66,5 +70,21 @@ public class Offer {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getBackgroundUrl() {
+        return backgroundUrl;
+    }
+
+    public void setBackgroundUrl(String backgroundUrl) {
+        this.backgroundUrl = backgroundUrl;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
