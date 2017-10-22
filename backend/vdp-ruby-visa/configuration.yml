@@ -1,0 +1,5 @@
+userId: "JUZC845NDWJWQFK3ACHG21lXKKnbid6maKub1gMIr-Y-KULFQ"
+password: "XfBTip6HlxwHH"
+cert: "/Users/mmakarov/rails/newPondi/cert.pem"
+key: "/Users/mmakarov/rails/newPondi/key_57399766-4baa-42b0-9584-5d32b635221d.pem"
+visaUrl: "https://sandbox.api.visa.com/"

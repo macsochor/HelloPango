@@ -1,0 +1,160 @@
+{
+    "records": [
+        {
+            "merchantName": "Macy's",
+            "amount": "25.00",
+            "merchantLogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Macys.svg/2000px-Macys.svg.png",
+            "backgroundUrl": "http://static5.businessinsider.com/image/586d6d89ee14b6aa5c8b6133-1190-625/macys-is-closing-68-stores--heres-where-they-will-shut-down.jpg",
+            "title": "Shop at Macy's today, One Day Sale!",
+            "subtitle": "Sun, Oct 22 - Mon, Oct 23",
+            "type": "offer"
+        },
+        {
+            "merchantName": "Zara",
+            "amount": "31.00",
+            "merchantLogoUrl": "http://1000logos.net/wp-content/uploads/2017/05/Zara-logo.png",
+            "backgroundUrl": "https://st2.depositphotos.com/1001279/9380/i/950/depositphotos_93809980-stock-photo-zara-store-interior.jpg",
+            "title": "Put a T-shirt on.",
+            "subtitle": "Valid until Jan 1st, 2018",
+            "type": "reward"
+        },
+        {
+            "merchantName": "Target",
+            "amount": "40.00",
+            "merchantLogoUrl": "http://image.ibb.co/mYtPam/target.png",
+            "backgroundUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLcS854YywpyQE82PMIxOvi_LWni9FBQTxPNFlpLd3HbHpCIjOyw",
+            "title": "Something special for you Michael. Save $40 off your first order.",
+            "subtitle": "Valid until Jan 1st, 2018",
+            "type": "offer"
+        },
+        {
+            "merchantName": "Philz Coffee",
+            "amount": "7.50",
+            "merchantLogoUrl": "http://iceblocksmidtown.com/wp-content/uploads/2017/01/philz-logo-web-mobile.png",
+            "backgroundUrl": "https://slack-imgs.com/?c=1&url=http%3A%2F%2Fmedia2.giphy.com%2Fmedia%2FvER8rSZTjKpag%2Fgiphy.gif",
+            "title": "Some title, but does it matter?",
+            "type": "reward"
+        },
+        {
+            "merchantName": "Uniqlo",
+            "amount": "33.01",
+            "merchantLogoUrl": "https://goldenninja.files.wordpress.com/2013/01/uniqlo_new_logo_20061.gif",
+            "backgroundUrl": "https://firebasestorage.googleapis.com/v0/b/rewards-6baf9.appspot.com/o/uniqlo.png?alt=media&token=a0137d53-4c71-411c-8401-0fa81d6252f1",
+            "title": "Get yourself a fucking hoodie. Valid until Jan 1, 2018",
+            "type": "reward"
+        },
+        {
+            "merchantName": "Safeway",
+            "amount": "3.20",
+            "merchantLogoUrl": "http://www.work2futurefoundation.org/wp-content/uploads/2017/08/safeway.png",
+            "backgroundUrl": "https://cdn.andnowuknow.com/thumbnails/safeway-store.jpg?Gv5Njl_gMp6xCixnvbDanV_SguVp5kSP",
+            "title": "Get a shitty pizza, boy!",
+            "type": "reward"
+        },
+        {
+            "merchantName": "Pizza Hut",
+            "amount": "3.71",
+            "merchantLogoUrl": "https://vignette.wikia.nocookie.net/logopedia/images/6/63/Pizza_Hut_2012_logo.png/revision/latest/scale-to-width-down/200?cb=20140507122847",
+            "backgroundUrl": "http://bestanimations.com/Food/FastFood/Pizza/pizza-animated-gif-11.gif",
+            "title": "Get a shitty pizza, boy!",
+            "type": "reward"
+        },
+        {
+            "merchantName": "Komatsu Ramen",
+            "amount": "5.00",
+            "merchantLogoUrl": "http://ashley-cameron.com/v3/wp-content/uploads/2014/08/Komatsu-Ramen-Logo.png",
+            "backgroundUrl": "https://fat.gfycat.com/WeeEquatorialApatosaur.gif",
+            "title": "Get a ramen, boy!",
+            "type": "reward"
+        },
+        {
+            "merchantName": "Blue Bottle",
+            "amount": "7.11",
+            "merchantLogoUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/0/06/Blue_Bottle_Coffee_logo.svg/1024px-Blue_Bottle_Coffee_logo.svg.png",
+            "title": "Some title, but does it matter?",
+            "type": "reward"
+        },
+        {
+            "merchantName": "Target",
+            "amount": "40.00",
+            "merchantLogoUrl": "http://www.pngpix.com/wp-content/uploads/2016/07/PNGPIX-COM-Target-Logo-PNG-Transparent-1.png",
+            "backgroundUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLcS854YywpyQE82PMIxOvi_LWni9FBQTxPNFlpLd3HbHpCIjOyw",
+            "title": "Something special for you Michael. Save $40 off your first order.",
+            "subtitle": "Valid until Jan 1st, 2018",
+            "type": "offer"
+        },
+        {
+            "merchantName": "Patagonia",
+            "amount": "50.00",
+            "merchantLogoUrl": "http://www.pngpix.com/wp-content/uploads/2016/07/PNGPIX-COM-Target-Logo-PNG-Transparent-1.png",
+            "backgroundUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLcS854YywpyQE82PMIxOvi_LWni9FBQTxPNFlpLd3HbHpCIjOyw",
+            "title": "Get a hoodie, Marina bro!",
+            "subtitle": "Valid until Jan 1st, 2018",
+            "type": "offer"
+        },
+        {
+            "merchantName": "Zipcar",
+            "amount": "17.00",
+            "merchantLogoUrl": "https://fremont.gov/ImageRepository/Document?documentID=31061",
+            "backgroundUrl": "http://static5.businessinsider.com/image/592f4169b74af41b008b5977/the-10-most-beautiful-cars-on-sale-today.jpg",
+            "title": "Points earned",
+            "type": "reward"
+        },
+        {
+            "merchantName": "Boba Guys",
+            "amount": "5.50",
+            "merchantLogoUrl": "http://68.media.tumblr.com/tumblr_lsbml2oYHp1qzu6nxo1_500.png",
+            "backgroundUrl": "http://www.upout.com/blog/wp-content/uploads/o-212-996x500.jpg",
+            "title": "Points earned",
+            "type": "progress"
+        },
+        {
+            "merchantName": "Whole Foods",
+            "amount": "11.50",
+            "merchantLogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Whole_Foods_Market_logo.svg/2000px-Whole_Foods_Market_logo.svg.png",
+            "backgroundUrl": "https://www.wholefoodsmarket.com/sites/default/files/media/PiccadillyStorefront.jpg",
+            "title": "Points earned",
+            "type": "reward"
+        }
+    ],
+    "newRecord": {
+        "merchantName": "Starbucks",
+        "amount": "5.00",
+        "merchantLogoUrl": "https://pbs.twimg.com/media/DBNE98oVoAAA1yB.png",
+        "backgroundUrl": "https://slack-imgs.com/?c=1&url=http%3A%2F%2Fmedia2.giphy.com%2Fmedia%2FvER8rSZTjKpag%2Fgiphy.gif",
+        "index": "0",
+        "title": "Some title, but does it matter?",
+        "type": "reward"
+    },
+    "profile": {
+        "firstName": "Michael",
+        "lastName": "Makarov",
+        "card4digits": ["1473", "4690"]
+    },
+    "transactions": [
+        {
+            "merchantName": "Starbucks",
+            "amount": "5.00"
+        },
+        {
+            "merchantName": "Uniqlo",
+            "amount": "10.00"
+        },
+        {
+            "merchantName": "Tao in Venetian",
+            "amount": "7.00"
+        },
+        {
+            "merchantName": "Sigar Shop at the corner",
+            "amount": "5.00"
+        },
+        {
+            "merchantName": "Victoria Secret",
+            "amount": "11.00"
+        },
+        {
+            "merchantName": "MUNI bus",
+            "amount": "5.00"
+        }
+    ]
+}
