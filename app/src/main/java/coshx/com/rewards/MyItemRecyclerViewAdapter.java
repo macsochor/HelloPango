@@ -55,6 +55,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             Glide.with(context).load(offer.getMerchantLogoUrl()).into(holder.iv_topleft_icon);
             holder.gradient.setBackground(ad_gradient);
             holder.iv_gif.setBackground(null);
+            holder.tv_brandname.setText("");
             holder.mIdView.setTextColor(context.getResources().getColor(R.color.black));
             holder.mContentView.setTextColor(context.getResources().getColor(R.color.black));
             holder.iv_notad.setVisibility(View.GONE);
@@ -63,10 +64,12 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             holder.iv_mega.setVisibility(View.GONE);
             holder.tv_sponsor.setVisibility(View.GONE);
             holder.gradient.setBackground(progress_gradient);
+            holder.tv_brandname.setText(offer.merchantName);
             Glide.with(context).load(offer.getBackgroundUrl()).into(holder.iv_gif);
             holder.iv_notad.setImageDrawable(context.getResources().getDrawable(R.drawable.progress_card));
         } else/* (offer.getType().equals("reward"))*/{
             Glide.with(context).load(offer.getBackgroundUrl()).into(holder.iv_gif);
+            holder.tv_brandname.setText(offer.merchantName);
             holder.iv_mega.setVisibility(View.GONE);
             holder.tv_sponsor.setVisibility(View.GONE);
             holder.gradient.setBackground(reward_gradient);
@@ -106,6 +109,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final ImageView iv_topleft_icon;
         public final ImageView iv_notad;
         public final View gradient;
+        public final TextView tv_brandname;
         public final TextView tv_sponsor;
         public final ImageView iv_mega;
         public Offer mItem;
@@ -114,6 +118,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public ViewHolder(View view) {
             super(view);
             mView = view;
+            tv_brandname = view.findViewById(R.id.tv_merchname);
             gradient = view.findViewById(R.id.card_gradient);
             mIdView = view.findViewById(R.id.id);
             mContentView = view.findViewById(R.id.content);

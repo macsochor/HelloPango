@@ -2,6 +2,9 @@ package coshx.com.rewards;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +15,9 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,15 +37,19 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class MainActivity extends AppCompatActivity {
+    OffersFragment offersFragment;
     FirebaseUser user;
     FirebaseAuth auth;
     RecyclerView rv;
+    public Fragment fragmet;
+    public CardFragment cardFragment;
     public static final String TAG = "MainActivity";
     private ItemTouchHelper mItemTouchHelper;
     private DatabaseReference offerReference;
     ArrayList<Offer> al_offers;
     boolean stars_active;
     boolean in_progress_active;
+    FragmentTransaction ft;
 
 
 
@@ -49,56 +58,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        auth = FirebaseAuth.getInstance();
-        user = auth.getCurrentUser();
 
-//        TextView textView = (TextView) findViewById(R.id.test);
-
-        al_offers = new ArrayList<>();
-
-//        RecyclerView stuff
-        rv = (RecyclerView) findViewById(R.id.rv);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        rv.setLayoutManager(llm);
-        rv.setAdapter(new MyItemRecyclerViewAdapter(al_offers));
-        Drawable active_topright = getResources().getDrawable(R.drawable.progress_active);
-        Drawable inactive_topright = getResources().getDrawable(R.drawable.progress);
-        Drawable active_toprleft = getResources().getDrawable(R.drawable.rewards_active);
-        Drawable inactive_topleft = getResources().getDrawable(R.drawable.rewards);
-        Drawable active_center = getResources().getDrawable(R.drawable.pango);
-        Drawable inactive_center = getResources().getDrawable(R.drawable.logo_bw);
-
-//        ImageView iv_gif = (ImageView) findViewById(R.id.iv_profpic);
-//
-//        Picasso.with(this).load(user.getPhotoUrl().toString()).into(iv_gif);
-        FirebaseMessaging.getInstance().subscribeToTopic("Offers");
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference().child("backend").child("offers");
-
-
-//        SwipeDeck cardStack = (SwipeDeck) findViewById(R.id.swipe_deck);
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                Log.e("Count " ,""+snapshot.getChildrenCount());
-                al_offers.clear();
-                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                    Offer offer = postSnapshot.getValue(Offer.class);
-                    Log.e("Get Data", offer.toString());
-                    al_offers.add(offer);
-                    rv.invalidate();
-                }
-                Collections.sort(al_offers, new OfferComparator());
-                rv.setAdapter(new MyItemRecyclerViewAdapter(al_offers));
-
-            }
-            @Override
-            public void onCancelled(DatabaseError firebaseError) {
-                Log.e("The read failed: " ,firebaseError.getMessage());
-            }
-        });
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -110,45 +70,90 @@ public class MainActivity extends AppCompatActivity {
         ImageButton b_star = myToolbar.findViewById(R.id.action_bar_star);
         ImageButton b_logo = myToolbar.findViewById(R.id.action_bar_logo);
 
-        imageButton.setOnClickListener(v -> {
-            Toast.makeText(this, "profile pressed", Toast.LENGTH_SHORT).show();
-            imageButton.setImageDrawable(active_topright);
-            b_star.setImageDrawable(inactive_topleft);
-            b_logo.setImageDrawable(inactive_center);
+        Drawable active_topright = getResources().getDrawable(R.drawable.progress_active);
+        Drawable inactive_topright = getResources().getDrawable(R.drawable.progress);
+        Drawable active_toprleft = getResources().getDrawable(R.drawable.rewards_active);
+        Drawable inactive_topleft = getResources().getDrawable(R.drawable.rewards);
+        Drawable active_center = getResources().getDrawable(R.drawable.pango);
+        Drawable inactive_center = getResources().getDrawable(R.drawable.logo_bw);
 
-            ArrayList<Offer> in_progress = new ArrayList<>();
-            for (Offer o : al_offers){
-                if(o.type.equals("progress")){
-                    in_progress.add(o);
+        offersFragment = new OffersFragment();
+        cardFragment = new CardFragment();
+
+        fragmet = offersFragment;
+        replaceFragment();
+
+        imageButton.setOnClickListener(v -> {
+            if(fragmet == offersFragment) {
+//            Toast.makeText(this, "profile pressed", Toast.LENGTH_SHORT).show();
+                imageButton.setImageDrawable(active_topright);
+                b_star.setImageDrawable(inactive_topleft);
+                b_logo.setImageDrawable(inactive_center);
+
+                ArrayList<Offer> in_progress = new ArrayList<>();
+                for (Offer o : offersFragment.al_offers) {
+                    if (o.type.equals("progress")) {
+                        in_progress.add(o);
+                    }
                 }
+                offersFragment.setAdatper(in_progress);
             }
-            rv.setAdapter(new MyItemRecyclerViewAdapter(in_progress));
         });
 
         imageButton.setImageDrawable(inactive_topright);
         b_star.setOnClickListener(v1 -> {
-            b_star.setImageDrawable(active_toprleft);
-            imageButton.setImageDrawable(inactive_topright);
-            b_logo.setImageDrawable(inactive_center);
-            ArrayList<Offer> starred = new ArrayList<>();
-            for (Offer o : al_offers){
-                if(o.type.equals("reward")){
-                    starred.add(o);
+            if(fragmet == offersFragment) {
+                b_star.setImageDrawable(active_toprleft);
+                imageButton.setImageDrawable(inactive_topright);
+                b_logo.setImageDrawable(inactive_center);
+                ArrayList<Offer> starred = new ArrayList<>();
+                for (Offer o : offersFragment.al_offers) {
+                    if (o.type.equals("reward")) {
+                        starred.add(o);
+                    }
                 }
+                offersFragment.setAdatper(starred);
             }
-            rv.setAdapter(new MyItemRecyclerViewAdapter(starred));
 //            cardStack.setAdapter(new SwipeDeckAdapter(stars_active ? starred : al_offers, this));
         });
 
         b_logo.setOnClickListener(v1 -> {
-            b_logo.setImageDrawable(active_center);
-            imageButton.setImageDrawable(inactive_topright);
-            b_star.setImageDrawable(inactive_topleft);
-            rv.setAdapter(new MyItemRecyclerViewAdapter(al_offers));
+            if(fragmet == offersFragment) {
+                b_logo.setImageDrawable(active_center);
+                imageButton.setImageDrawable(inactive_topright);
+                b_star.setImageDrawable(inactive_topleft);
+                offersFragment.setAdatper(offersFragment.al_offers);
+            }
         });
 
 
         final ArrayList<String> testData = new ArrayList<>();
+
+        BottomNavigationView bnv = findViewById(R.id.bottom_navigation);
+        bnv.setOnNavigationItemReselectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.action_card:
+                    fragmet = offersFragment;
+                    Toast.makeText(this, "bottom", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.action_pango_home:
+                    fragmet = cardFragment;
+                    break;
+
+            }
+            replaceFragment();
+
+        });
+    }
+
+        public void replaceFragment(){
+            //replacing the fragment
+            if (fragmet != null) {
+                ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.fl, fragmet);
+                ft.commit();
+            }
+        }
 
 //        SwipeDeckAdapter adapter = new SwipeDeckAdapter(al_offers, this);
 //
@@ -190,12 +195,15 @@ public class MainActivity extends AppCompatActivity {
 //            adapter.notifyDataSetChanged();
 //        });
 
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_card:
+                Toast.makeText(this, "jlasflsdf", Toast.LENGTH_SHORT).show();
+                LinearLayout root_ll = findViewById(R.id.ll_root);
+                root_ll.removeAllViews();
+                View v = getLayoutInflater().inflate(R.layout.card_layout, null);
+                root_ll.addView(v);
 //                // User chose the "Favorite" action, mark the current item
 //                // as a favorite...
 //                Toast.makeText(this, "profile icon pressed", Toast.LENGTH_SHORT).show();

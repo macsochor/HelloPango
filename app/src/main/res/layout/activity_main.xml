@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,50 +12,19 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="@color/white"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="Hello World!"-->
-    <!--android:layout_below="@id/my_toolbar"-->
-    <!--android:id="@+id/test"/>-->
-
-    <!--<de.hdodenhof.circleimageview.CircleImageView-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:layout_below="@id/my_toolbar"-->
-    <!--android:layout_width="96dp"-->
-    <!--android:layout_height="96dp"-->
-    <!--app:civ_border_width="0dp"-->
-    <!--android:id="@+id/iv_profpic"/>-->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv"
-        android:name="coshx.com.rewards.ItemFragment"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="LinearLayoutManager"
-        tools:context="coshx.com.rewards.ItemFragment"
-        tools:listitem="@layout/fragment_item"
-        android:layout_below="@id/my_toolbar"
-        android:layout_above="@+id/bottom_navigation"
-        android:layout_alignParentStart="true" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/fl" />
 
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:itemBackground="@color/black"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/bottommenu" />
 
     <!--<com.daprlabs.cardstack.SwipeFrameLayout-->
     <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
@@ -84,7 +53,17 @@
 
     <!--</com.daprlabs.cardstack.SwipeFrameLayout>-->
 
-</RelativeLayout>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/black"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottommenu" />
+
+</LinearLayout>
 
     <!--<?xml version="1.0" encoding="utf-8"?>-->
     <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
