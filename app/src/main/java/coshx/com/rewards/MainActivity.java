@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
                     b_logo.setImageDrawable(active_center);
                     fragmet = offersFragment;
                     break;
-
             }
             replaceFragment();
             return true;

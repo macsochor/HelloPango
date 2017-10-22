@@ -91,6 +91,17 @@
                 android:layout_margin="12dp"
                 android:src="@drawable/megaphone" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:textSize="26sp"
+                android:layout_margin="16dp"
+                android:id="@+id/tv_price"
+                android:text="Dummy Text"/>
+
 
             <TextView
                 android:id="@+id/id"

@@ -50,7 +50,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         Drawable progress_drawable = context.getDrawable(R.drawable.progress_card);
         Drawable rewards_drawable = context.getDrawable(R.drawable.rewards_card);
 
-
+        holder.tv_price.setText("$"+offer.getAmount());
         if(offer.getType().equals("offer")){
             Glide.with(context).load(offer.getMerchantLogoUrl()).into(holder.iv_topleft_icon);
             holder.gradient.setBackground(ad_gradient);
@@ -59,12 +59,14 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             holder.mIdView.setTextColor(context.getResources().getColor(R.color.black));
             holder.mContentView.setTextColor(context.getResources().getColor(R.color.black));
             holder.iv_notad.setVisibility(View.GONE);
+            holder.tv_price.setText("");
         }
         else if (offer.getType().equals("progress")){
             holder.iv_mega.setVisibility(View.GONE);
             holder.tv_sponsor.setVisibility(View.GONE);
             holder.gradient.setBackground(progress_gradient);
             holder.tv_brandname.setText(offer.merchantName);
+            holder.tv_price.setText("");
             Glide.with(context).load(offer.getBackgroundUrl()).into(holder.iv_gif);
             holder.iv_notad.setImageDrawable(context.getResources().getDrawable(R.drawable.progress_card));
         } else/* (offer.getType().equals("reward"))*/{
@@ -88,9 +90,9 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mIdView.setTypeface(font);
 
         holder.mView.setOnClickListener(v -> {
-            Toast.makeText(holder.mIdView.getContext(), "onClick " + position, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(holder.mIdView.getContext(), "onClick " + position, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(v.getContext(), DealDetailsActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
             v.getContext().startActivity(intent);
         });
     }
@@ -112,6 +114,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final TextView tv_brandname;
         public final TextView tv_sponsor;
         public final ImageView iv_mega;
+        public final TextView tv_price;
         public Offer mItem;
         public LinearLayout ll;
 
@@ -125,6 +128,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             cardView = view.findViewById(R.id.card_view);
             iv_gif = view.findViewById(R.id.iv_gif);
             tv_sponsor = view.findViewById(R.id.tv_sponsor);
+            tv_price = view.findViewById(R.id.tv_price);
             iv_mega = view.findViewById(R.id.iv_megaphone);
             iv_topleft_icon = view.findViewById(R.id.iv_topleft_icon);
             iv_notad = view.findViewById(R.id.iv_notad_icon);

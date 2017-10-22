@@ -1,8 +1,12 @@
 package coshx.com.rewards;
 
+import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -35,9 +39,13 @@ public class FCMMessageService extends FirebaseMessagingService {
 
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(this)
-                            .setSmallIcon(R.drawable.ic_action_name)
+                            .setLargeIcon((new BitmapDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.rewards_active))).getBitmap())
+                            .setSmallIcon(R.drawable.pango)
+                            .setPriority(Notification.PRIORITY_HIGH)
+                            .setStyle(new NotificationCompat.BigTextStyle())
                             .setContentTitle(remoteMessage.getNotification().getTitle())
                             .setContentText(remoteMessage.getNotification().getBody());
+
             int mNotificationId = 001;
             for (String s : remoteMessage.getData().values()){
                 Log.e(TAG, s);
@@ -47,7 +55,19 @@ public class FCMMessageService extends FirebaseMessagingService {
             NotificationManager mNotifyMgr =
                     (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 // Builds the notification and issues it.
-            mNotifyMgr.notify(mNotificationId, mBuilder.build());
+            Notification notification = mBuilder.build();
+            notification.flags |= Notification.FLAG_AUTO_CANCEL;
+            notification.flags = Notification.FLAG_SHOW_LIGHTS;
+            notification.defaults |= Notification.DEFAULT_SOUND;
+            notification.defaults |= Notification.DEFAULT_VIBRATE;
+            notification.ledARGB = 0xffffffff;
+            notification.ledOnMS = 500;
+            notification.ledOffMS = 2000;
+            Intent notificationIntent = new Intent(this, DealDetailsActivity.class);
+            notificationIntent.putExtra("item_id", "1001");
+            PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+            notification.contentIntent = contentIntent;
+            mNotifyMgr.notify(mNotificationId,  notification);
         }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
