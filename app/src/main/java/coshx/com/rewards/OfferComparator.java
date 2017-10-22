@@ -11,6 +11,6 @@ import coshx.com.rewards.model.Offer;
 public class OfferComparator implements Comparator<Offer> {
     @Override
     public int compare(Offer o1, Offer o2) {
-        return o1.getIndex().compareTo(o2.getIndex());
+        return o1.getIndex() - o2.getIndex();
     }
 }

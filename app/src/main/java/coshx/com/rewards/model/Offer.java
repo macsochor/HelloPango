@@ -15,14 +15,14 @@ public class Offer {
     public String merchantName;
     public String type;
     public String title;
-    public String index;
+    public int index;
 
 
     public Offer() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public Offer(String amount, String merchant_logo_url, String backgroundUrl, String merchant_name, String title, String type, String index) {
+    public Offer(String amount, String merchant_logo_url, String backgroundUrl, String merchant_name, String title, String type, int index) {
         this.amount = amount;
         this.merchantLogoUrl = merchant_logo_url;
         this.backgroundUrl = backgroundUrl;
@@ -36,9 +36,12 @@ public class Offer {
     public String toString() {
         return "Offer{" +
                 "amount='" + amount + '\'' +
-                ", merchant_logo_url='" + merchantLogoUrl + '\'' +
-                ", merchat_name='" + merchantName + '\'' +
+                ", merchantLogoUrl='" + merchantLogoUrl + '\'' +
+                ", backgroundUrl='" + backgroundUrl + '\'' +
+                ", merchantName='" + merchantName + '\'' +
+                ", type='" + type + '\'' +
                 ", title='" + title + '\'' +
+                ", index=" + index +
                 '}';
     }
 
@@ -90,11 +93,11 @@ public class Offer {
         this.type = type;
     }
 
-    public String getIndex() {
+    public int getIndex() {
         return index;
     }
 
-    public void setIndex(String index) {
+    public void setIndex(int index) {
         this.index = index;
     }
 }

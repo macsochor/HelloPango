@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import java.util.List;
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
 
     private final List<Offer> offers;
+    public static final String TAG = "MyItemAdapter";
 
     public MyItemRecyclerViewAdapter(List<Offer> items) {
         offers = items;
@@ -32,42 +34,46 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_item, parent, false);
-        return new ViewHolder(view);
+        ViewHolder vh = new ViewHolder(view);
+        return vh;
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int pos) {
+        final int position = pos;
+        Log.e(TAG, ""+position + "       " + offers.get(position));
         Context context = holder.mIdView.getContext();
         Offer offer = offers.get(position);
         Drawable ad_gradient = context.getDrawable(R.drawable.ad_gradient);
         Drawable reward_gradient = context.getDrawable(R.drawable.reward_gradient);
         Drawable progress_gradient = context.getDrawable(R.drawable.progress_gradient);
 
-        if (offer.getType().equals("progress")){
+
+        if(offer.getType().equals("offer")){
+            Glide.with(context).load(offer.getMerchantLogoUrl()).into(holder.iv_topleft_icon);
+            holder.gradient.setBackground(ad_gradient);
+            holder.iv_gif.setBackground(null);
+            holder.mIdView.setTextColor(context.getResources().getColor(R.color.black));
+            holder.mContentView.setTextColor(context.getResources().getColor(R.color.black));
+        }
+        else if (offer.getType().equals("progress")){
             holder.iv_mega.setVisibility(View.GONE);
             holder.tv_sponsor.setVisibility(View.GONE);
             holder.gradient.setBackground(progress_gradient);
             Glide.with(context).load(offer.getBackgroundUrl()).into(holder.iv_gif);
-        }
-        if(offer.getType().equals("reward")){
+        } else/* (offer.getType().equals("reward"))*/{
             Glide.with(context).load(offer.getBackgroundUrl()).into(holder.iv_gif);
             holder.iv_mega.setVisibility(View.GONE);
             holder.tv_sponsor.setVisibility(View.GONE);
             holder.gradient.setBackground(reward_gradient);
         }
-        if(offer.getType().equals("offer")){
-            holder.gradient.setBackground(ad_gradient);
-            holder.iv_gif.setBackground(null);
-        }
-
-
 
 
         holder.mItem = offers.get(position);
         holder.mIdView.setText(offers.get(position).merchantName);
-        holder.mContentView.setText(offers.get(position).amount);
+        holder.mContentView.setText(offers.get(position).title);
         Typeface font = Typeface.createFromAsset(holder.mIdView.getContext().getAssets(), "sf-pro-display-regular.otf");
-        holder.mIdView.setTypeface(font);
+        holder.mContentView.setTypeface(font);
 
         holder.tv_sponsor.setTypeface(font);
 
@@ -90,6 +96,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final TextView mContentView;
         public final CardView cardView;
         public final ImageView iv_gif;
+        public final ImageView iv_topleft_icon;
         public final View gradient;
         public final TextView tv_sponsor;
         public final ImageView iv_mega;
@@ -106,6 +113,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             iv_gif = view.findViewById(R.id.iv_gif);
             tv_sponsor = view.findViewById(R.id.tv_sponsor);
             iv_mega = view.findViewById(R.id.iv_megaphone);
+            iv_topleft_icon = view.findViewById(R.id.iv_topleft_icon);
             ll = (LinearLayout) view;
         }
 

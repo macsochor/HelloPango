@@ -1,7 +1,6 @@
 package coshx.com.rewards;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,14 +11,9 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.daprlabs.cardstack.SwipeDeck;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,14 +22,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 
-import coshx.com.rewards.dummy.DummyContent;
 import coshx.com.rewards.model.Offer;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -49,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference offerReference;
     ArrayList<Offer> al_offers;
     boolean stars_active;
+    boolean in_progress_active;
+
 
 
 
@@ -84,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 Log.e("Count " ,""+snapshot.getChildrenCount());
+                al_offers.clear();
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Offer offer = postSnapshot.getValue(Offer.class);
                     Log.e("Get Data", offer.toString());
@@ -110,19 +103,30 @@ public class MainActivity extends AppCompatActivity {
 
         imageButton.setOnClickListener(v -> {
             Toast.makeText(this, "profile pressed", Toast.LENGTH_SHORT).show();
+            ArrayList<Offer> in_progress = new ArrayList<>();
+            for (Offer o : al_offers){
+                if(o.type.equals("progress")){
+                    in_progress.add(o);
+                }
+            }
+            rv.setAdapter(new MyItemRecyclerViewAdapter(in_progress));
         });
 
         ImageButton b_star = myToolbar.findViewById(R.id.action_bar_star);
         b_star.setOnClickListener(v1 -> {
             ArrayList<Offer> starred = new ArrayList<>();
             for (Offer o : al_offers){
-                if(o.merchantName.length() > 7){
+                if(o.type.equals("reward")){
                     starred.add(o);
                 }
             }
-            stars_active =  !stars_active;
-
+            rv.setAdapter(new MyItemRecyclerViewAdapter(starred));
 //            cardStack.setAdapter(new SwipeDeckAdapter(stars_active ? starred : al_offers, this));
+        });
+
+        ImageButton b_logo = myToolbar.findViewById(R.id.action_bar_logo);
+        b_logo.setOnClickListener(v1 -> {
+            rv.setAdapter(new MyItemRecyclerViewAdapter(al_offers));
         });
 
 
