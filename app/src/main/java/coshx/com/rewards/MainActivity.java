@@ -38,6 +38,7 @@ import coshx.com.rewards.dummy.DummyContent;
 import coshx.com.rewards.model.Offer;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
+
 public class MainActivity extends AppCompatActivity {
     FirebaseUser user;
     FirebaseAuth auth;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
     private ItemTouchHelper mItemTouchHelper;
     private DatabaseReference offerReference;
+    ArrayList<Offer> al_offers;
+    boolean stars_active;
 
 
 
@@ -57,20 +60,23 @@ public class MainActivity extends AppCompatActivity {
 
 //        TextView textView = (TextView) findViewById(R.id.test);
 
-        //RecyclerView stuff
-//        rv = (RecyclerView) findViewById(R.id.rv);
-//        LinearLayoutManager llm = new LinearLayoutManager(this);
-//        rv.setLayoutManager(llm);
-//        rv.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS));
+//        RecyclerView stuff
+        rv = (RecyclerView) findViewById(R.id.rv);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS));
 
 //        ImageView imageView = (ImageView) findViewById(R.id.iv_profpic);
-
+//
 //        Picasso.with(this).load(user.getPhotoUrl().toString()).into(imageView);
         FirebaseMessaging.getInstance().subscribeToTopic("Offers");
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("backend").child("offers");
-        ArrayList<Offer> al_offers = new ArrayList<>();
+        al_offers = new ArrayList<>();
+
+
+//        SwipeDeck cardStack = (SwipeDeck) findViewById(R.id.swipe_deck);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -101,50 +107,63 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "profile pressed", Toast.LENGTH_SHORT).show();
         });
 
-        SwipeDeck cardStack = (SwipeDeck) findViewById(R.id.swipe_deck);
+        ImageButton b_star = myToolbar.findViewById(R.id.action_bar_star);
+        b_star.setOnClickListener(v1 -> {
+            ArrayList<Offer> starred = new ArrayList<>();
+            for (Offer o : al_offers){
+                if(o.merchantName.length() > 7){
+                    starred.add(o);
+                }
+            }
+            stars_active =  !stars_active;
+
+//            cardStack.setAdapter(new SwipeDeckAdapter(stars_active ? starred : al_offers, this));
+        });
+
 
         final ArrayList<String> testData = new ArrayList<>();
         al_offers.add(new Offer("asdf", "asdf", "test", "etas"));
 
 
-        final SwipeDeckAdapter adapter = new SwipeDeckAdapter(al_offers, this);
-        cardStack.setAdapter(adapter);
-
-        cardStack.setEventCallback(new SwipeDeck.SwipeEventCallback() {
-            @Override
-            public void cardSwipedLeft(int position) {
-                Log.i("MainActivity", "card was swiped left, position in adapter: " + position);
-                al_offers.add(adapter.data.get(position%12));
-            }
-
-            @Override
-            public void cardSwipedRight(int position) {
-                Log.i("MainActivity", "card was swiped right, position in adapter: " + position);
-                al_offers.add(adapter.data.get(position%12));
-            }
-
-            @Override
-            public void cardsDepleted() {
-                Log.i("MainActivity", "no more cards");
-            }
-
-            @Override
-            public void cardActionDown() {
-
-            }
-
-            @Override
-            public void cardActionUp() {
-
-            }
-        });
-
-        Button b = (Button) findViewById(R.id.b_mainact);
-        b.setOnClickListener(v -> {
-            cardStack.invalidate();
-            Log.e(TAG, al_offers.toString());
-            adapter.notifyDataSetChanged();
-        });
+//        SwipeDeckAdapter adapter = new SwipeDeckAdapter(al_offers, this);
+//
+//        cardStack.setAdapter(adapter);
+//
+//        cardStack.setEventCallback(new SwipeDeck.SwipeEventCallback() {
+//            @Override
+//            public void cardSwipedLeft(int position) {
+//                Log.i("MainActivity", "card was swiped left, position in adapter: " + position);
+//                al_offers.add(adapter.data.get(position%12));
+//            }
+//
+//            @Override
+//            public void cardSwipedRight(int position) {
+//                Log.i("MainActivity", "card was swiped right, position in adapter: " + position);
+//                al_offers.add(adapter.data.get(position%12));
+//            }
+//
+//            @Override
+//            public void cardsDepleted() {
+//                Log.i("MainActivity", "no more cards");
+//            }
+//
+//            @Override
+//            public void cardActionDown() {
+//
+//            }
+//
+//            @Override
+//            public void cardActionUp() {
+//
+//            }
+//        });
+//
+//        Button b = (Button) findViewById(R.id.b_mainact);
+//        b.setOnClickListener(v -> {
+//            cardStack.invalidate();
+//            Log.e(TAG, al_offers.toString());
+//            adapter.notifyDataSetChanged();
+//        });
 
     }
 

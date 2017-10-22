@@ -39,6 +39,9 @@ public class FCMMessageService extends FirebaseMessagingService {
                             .setContentTitle(remoteMessage.getNotification().getTitle())
                             .setContentText(remoteMessage.getNotification().getBody());
             int mNotificationId = 001;
+            for (String s : remoteMessage.getData().values()){
+                Log.e(TAG, s);
+            }
 // Sets an ID for the notification
 // Gets an instance of the NotificationManager service
             NotificationManager mNotifyMgr =
